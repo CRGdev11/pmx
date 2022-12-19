@@ -1,7 +1,0 @@
-Sw1 :
-  hostname: 'sandbox-iosxr-1.cisco.com',
-  #platform: 'iosxr',
-  username: 'admin',
-  password: 'C1sco12345',
-  groups:   'group_ios'
-

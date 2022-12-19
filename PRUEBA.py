@@ -1,22 +1,14 @@
-class dispositivo:
-    pass
-
-class switch:
-    hostname = '172.16.111.58'
-    password = '******'
-    puerto = 22
-
-    
-#print('funcionando')
+import inventory.routers as rt
+from netmiko import ConnectHandler
+from getpass import getpass
 
 class router:
-    password = '******'
-    puerto = 22
-    hostname = '172.16.111.58'
-    print(hostname)
+   def mostrarInterfaces():
+    mostrar_interfaz = "show interface brief"
 
+    # ConnectHandler(**rt.pem_mex_1) as net_connect:
+    #    output = net_connect.send_command(mostrar_interfaz)
 
-    #def obtenerhostname():
+    print(mostrar_interfaz)
 
-
-router()
+router.mostrarInterfaces()
