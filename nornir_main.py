@@ -9,3 +9,4 @@ nr = InitNornir(
 result = nr.run(task = napalm_cli, command = ['sho interface brief'])
 
 print_result(result)
+#prueba
