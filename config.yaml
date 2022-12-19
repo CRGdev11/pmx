@@ -2,11 +2,11 @@ inventory:
   plugin: SimpleInventory
   options:
     host_file: 'inventory/host.yaml'
-    group_file: 'inventory/grupos.yaml'
+    #group_file: 'inventory/grupos.yaml'
     #defaults: 'inventory/defaults.yaml'
 
 
 runner:
   plugin: threaded
   options: 
-    num_workers:     
+    num_workers: 2     
