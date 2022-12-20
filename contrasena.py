@@ -1,14 +1,17 @@
 from getpass import getpass
 
 class inicioSesion():
-    def inicioSesion():
-        inicio_sesion = input(" ¿Quieres iniciar sesion? y/n ")
-        if (inicio_sesion == "Y" or "y"):
-            obtenerCredenciales.credenciales()
+    usuario = None
 
-class obtenerCredenciales():
-    def credenciales():
-            usuario = getpass("\n introduzca el usuario: ")
-            contrasena = getpass("\n introduzca la contraseña: ")
+    def inicio_sesion(self):
+        self.inicio_sesion = input(" ¿Quieres iniciar sesion? y/n ")
 
-inicioSesion.inicioSesion()
+    def obtener_usuario(self):
+        self.usuario = getpass("\n introduzca el usuario: ")
+        print(self.usuario)
+
+    def obtener_contrasena(self):
+        self.contrasena = getpass("\n introduzca la contrasena: ")
+
+autenticacion = inicioSesion
+autenticacion.obtener_usuario()
