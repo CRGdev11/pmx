@@ -1,14 +1,11 @@
 import inventory.routers as rt
 from netmiko import ConnectHandler
+import comandos as com
 
-comando = "show ip interface brief"
 
 class router:
    def mostrarInterfaces():
-    mostrar_interfaz = "show interface brief"
     with ConnectHandler(**rt.pem_mex_1) as net_connect:
-        output = net_connect.send_command(comando)
+        output = net_connect.send_command(com.mostrar_interface)
 
-    print(mostrar_interfaz)
-
-router.mostrarInterfaces()
+    print(output)
