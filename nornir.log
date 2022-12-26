@@ -1,0 +1,618 @@
+2022-12-26 10:30:41,635 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts']} on 2 hosts
+2022-12-26 10:30:51,736 - nornir.core.task -    ERROR -      start() - Host 'rt2': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 1046, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/lib/python3/dist-packages/paramiko/client.py", line 349, in connect
+    retry_on_signal(lambda: sock.connect(addr))
+  File "/usr/lib/python3/dist-packages/paramiko/util.py", line 279, in retry_on_signal
+    return function()
+  File "/usr/lib/python3/dist-packages/paramiko/client.py", line 349, in <lambda>
+    retry_on_signal(lambda: sock.connect(addr))
+TimeoutError: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/base/base.py", line 113, in _netmiko_open
+    self._netmiko_device = ConnectHandler(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/ssh_dispatcher.py", line 365, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 439, in __init__
+    self._open()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 444, in _open
+    self.establish_connection()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 1068, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 10.30.11.170:22
+
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/ios/ios.py", line 170, in open
+    self.device = self._netmiko_open(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/base/base.py", line 122, in _netmiko_open
+    raise ConnectionException("Cannot connect to {}".format(self.hostname))
+napalm.base.exceptions.ConnectionException: Cannot connect to 10.30.11.170
+
+2022-12-26 10:30:51,736 - nornir.core.task -    ERROR -      start() - Host 'rt1': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 1046, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/lib/python3/dist-packages/paramiko/client.py", line 349, in connect
+    retry_on_signal(lambda: sock.connect(addr))
+  File "/usr/lib/python3/dist-packages/paramiko/util.py", line 279, in retry_on_signal
+    return function()
+  File "/usr/lib/python3/dist-packages/paramiko/client.py", line 349, in <lambda>
+    retry_on_signal(lambda: sock.connect(addr))
+TimeoutError: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/pyIOSXR/iosxr.py", line 186, in open
+    self.device = ConnectHandler(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/ssh_dispatcher.py", line 365, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 439, in __init__
+    self._open()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 444, in _open
+    self.establish_connection()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/cisco/cisco_xr.py", line 11, in establish_connection
+    super().establish_connection(width=width, height=height)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 1068, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_xr 171.190.10.64:22
+
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/iosxr/iosxr.py", line 81, in open
+    self.device.open()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/pyIOSXR/iosxr.py", line 199, in open
+    raise ConnectError(t_err.args[0])
+napalm.pyIOSXR.exceptions.ConnectError: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_xr 171.190.10.64:22
+
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/iosxr/iosxr.py", line 84, in open
+    raise ConnectionException(conn_err.args[0])
+napalm.base.exceptions.ConnectionException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_xr 171.190.10.64:22
+
+
+
+2022-12-26 10:33:20,010 -  nornir.core -     INFO -        run() - Running task 'napalm_get' with args {'getters': ['facts']} on 2 hosts
+2022-12-26 10:33:21,052 - nornir.core.task -    ERROR -      start() - Host 'rt2': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 32, in napalm_get
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/ios/ios.py", line 170, in open
+    self.device = self._netmiko_open(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/base/base.py", line 128, in _netmiko_open
+    self._netmiko_device.enable()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/cisco_base_connection.py", line 25, in enable
+    return super().enable(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 1942, in enable
+    raise ValueError(msg)
+ValueError: Failed to enter enable mode. Please ensure you pass the 'secret' argument to ConnectHandler.
+
+2022-12-26 10:34:23,101 - nornir.core.task -    ERROR -      start() - Host 'rt1': task 'napalm_get' failed with traceback:
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir_napalm/plugins/tasks/napalm_get.py", line 44, in napalm_get
+    result[g] = method(**options)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/iosxr/iosxr.py", line 214, in get_facts
+    self.device.make_rpc_call(facts_rpc_request)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/pyIOSXR/iosxr.py", line 175, in make_rpc_call
+    result = self._execute_rpc(rpc_command)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/pyIOSXR/iosxr.py", line 415, in _execute_rpc
+    response = self._send_command(xml_rpc_command, delay_factor=delay_factor)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/pyIOSXR/iosxr.py", line 306, in _send_command
+    last_read = self.device.send_command(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/utilities.py", line 592, in wrapper_decorator
+    return func(self, *args, **kwargs)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 1721, in send_command
+    raise ReadTimeout(msg)
+netmiko.exceptions.ReadTimeout: 
+Pattern not detected: 'XML>' in output.
+
+Things you might try to fix this:
+1. Explicitly set your pattern using the expect_string argument.
+2. Increase the read_timeout to a larger value.
+
+You can also look at the Netmiko session_log or debug log for more information.
+
+
+
+2022-12-26 10:36:53,351 -  nornir.core -     INFO -        run() - Running task 'napalm_cli' with args {'commands': ['show interfaces summary']} on 2 hosts
+2022-12-26 10:36:54,337 - nornir.core.task -    ERROR -      start() - Host 'rt2': task 'napalm_cli' failed with traceback:
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir_napalm/plugins/tasks/napalm_cli.py", line 19, in napalm_cli
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/ios/ios.py", line 170, in open
+    self.device = self._netmiko_open(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/base/base.py", line 128, in _netmiko_open
+    self._netmiko_device.enable()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/cisco_base_connection.py", line 25, in enable
+    return super().enable(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 1942, in enable
+    raise ValueError(msg)
+ValueError: Failed to enter enable mode. Please ensure you pass the 'secret' argument to ConnectHandler.
+
+2022-12-26 10:37:56,356 - nornir.core.task -    ERROR -      start() - Host 'rt1': task 'napalm_cli' failed with traceback:
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir_napalm/plugins/tasks/napalm_cli.py", line 20, in napalm_cli
+    result = device.cli(commands)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/iosxr/iosxr.py", line 944, in cli
+    cli_output[str(command)] = str(self.device._execute_show(command))
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/pyIOSXR/iosxr.py", line 494, in _execute_show
+    response = self._execute_rpc(rpc_command)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/pyIOSXR/iosxr.py", line 415, in _execute_rpc
+    response = self._send_command(xml_rpc_command, delay_factor=delay_factor)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/pyIOSXR/iosxr.py", line 306, in _send_command
+    last_read = self.device.send_command(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/utilities.py", line 592, in wrapper_decorator
+    return func(self, *args, **kwargs)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 1721, in send_command
+    raise ReadTimeout(msg)
+netmiko.exceptions.ReadTimeout: 
+Pattern not detected: 'XML>' in output.
+
+Things you might try to fix this:
+1. Explicitly set your pattern using the expect_string argument.
+2. Increase the read_timeout to a larger value.
+
+You can also look at the Netmiko session_log or debug log for more information.
+
+
+
+2022-12-26 12:09:13,647 -  nornir.core -     INFO -        run() - Running task 'napalm_cli' with args {'commands': ['show interfaces summary']} on 2 hosts
+2022-12-26 12:09:14,143 - nornir.core.task -    ERROR -      start() - Host 'rt1': task 'napalm_cli' failed with traceback:
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 1046, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/lib/python3/dist-packages/paramiko/client.py", line 435, in connect
+    self._auth(
+  File "/usr/lib/python3/dist-packages/paramiko/client.py", line 766, in _auth
+    raise saved_exception
+  File "/usr/lib/python3/dist-packages/paramiko/client.py", line 753, in _auth
+    self._transport.auth_password(username, password)
+  File "/usr/lib/python3/dist-packages/paramiko/transport.py", line 1563, in auth_password
+    return self.auth_handler.wait_for_response(my_event)
+  File "/usr/lib/python3/dist-packages/paramiko/auth_handler.py", line 258, in wait_for_response
+    raise e
+paramiko.ssh_exception.AuthenticationException: Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/pyIOSXR/iosxr.py", line 186, in open
+    self.device = ConnectHandler(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/ssh_dispatcher.py", line 365, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 439, in __init__
+    self._open()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 444, in _open
+    self.establish_connection()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/cisco/cisco_xr.py", line 11, in establish_connection
+    super().establish_connection(width=width, height=height)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 1083, in establish_connection
+    raise NetmikoAuthenticationException(msg)
+netmiko.exceptions.NetmikoAuthenticationException: Authentication to device failed.
+
+Common causes of this problem are:
+1. Invalid username and password
+2. Incorrect SSH-key file
+3. Connecting to the wrong device
+
+Device settings: cisco_xr 172.16.110.88:22
+
+
+Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/iosxr/iosxr.py", line 81, in open
+    self.device.open()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/pyIOSXR/iosxr.py", line 202, in open
+    raise ConnectError(au_err.args[0])
+napalm.pyIOSXR.exceptions.ConnectError: Authentication to device failed.
+
+Common causes of this problem are:
+1. Invalid username and password
+2. Incorrect SSH-key file
+3. Connecting to the wrong device
+
+Device settings: cisco_xr 172.16.110.88:22
+
+
+Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir_napalm/plugins/tasks/napalm_cli.py", line 19, in napalm_cli
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/iosxr/iosxr.py", line 84, in open
+    raise ConnectionException(conn_err.args[0])
+napalm.base.exceptions.ConnectionException: Authentication to device failed.
+
+Common causes of this problem are:
+1. Invalid username and password
+2. Incorrect SSH-key file
+3. Connecting to the wrong device
+
+Device settings: cisco_xr 172.16.110.88:22
+
+
+Authentication failed.
+
+2022-12-26 12:09:19,054 - nornir.core.task -    ERROR -      start() - Host 'rt2': task 'napalm_cli' failed with traceback:
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 1046, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/lib/python3/dist-packages/paramiko/client.py", line 435, in connect
+    self._auth(
+  File "/usr/lib/python3/dist-packages/paramiko/client.py", line 766, in _auth
+    raise saved_exception
+  File "/usr/lib/python3/dist-packages/paramiko/client.py", line 753, in _auth
+    self._transport.auth_password(username, password)
+  File "/usr/lib/python3/dist-packages/paramiko/transport.py", line 1563, in auth_password
+    return self.auth_handler.wait_for_response(my_event)
+  File "/usr/lib/python3/dist-packages/paramiko/auth_handler.py", line 258, in wait_for_response
+    raise e
+paramiko.ssh_exception.AuthenticationException: Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir_napalm/plugins/tasks/napalm_cli.py", line 19, in napalm_cli
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/ios/ios.py", line 170, in open
+    self.device = self._netmiko_open(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/base/base.py", line 113, in _netmiko_open
+    self._netmiko_device = ConnectHandler(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/ssh_dispatcher.py", line 365, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 439, in __init__
+    self._open()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 444, in _open
+    self.establish_connection()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 1083, in establish_connection
+    raise NetmikoAuthenticationException(msg)
+netmiko.exceptions.NetmikoAuthenticationException: Authentication to device failed.
+
+Common causes of this problem are:
+1. Invalid username and password
+2. Incorrect SSH-key file
+3. Connecting to the wrong device
+
+Device settings: cisco_ios 172.16.110.88:22
+
+
+Authentication failed.
+
+2022-12-26 12:10:05,984 -  nornir.core -     INFO -        run() - Running task 'napalm_cli' with args {'commands': ['show interfaces summary']} on 1 hosts
+2022-12-26 12:10:06,306 - nornir.core.task -    ERROR -      start() - Host 'rt1': task 'napalm_cli' failed with traceback:
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 1046, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/lib/python3/dist-packages/paramiko/client.py", line 435, in connect
+    self._auth(
+  File "/usr/lib/python3/dist-packages/paramiko/client.py", line 766, in _auth
+    raise saved_exception
+  File "/usr/lib/python3/dist-packages/paramiko/client.py", line 753, in _auth
+    self._transport.auth_password(username, password)
+  File "/usr/lib/python3/dist-packages/paramiko/transport.py", line 1563, in auth_password
+    return self.auth_handler.wait_for_response(my_event)
+  File "/usr/lib/python3/dist-packages/paramiko/auth_handler.py", line 258, in wait_for_response
+    raise e
+paramiko.ssh_exception.AuthenticationException: Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/pyIOSXR/iosxr.py", line 186, in open
+    self.device = ConnectHandler(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/ssh_dispatcher.py", line 365, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 439, in __init__
+    self._open()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 444, in _open
+    self.establish_connection()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/cisco/cisco_xr.py", line 11, in establish_connection
+    super().establish_connection(width=width, height=height)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 1083, in establish_connection
+    raise NetmikoAuthenticationException(msg)
+netmiko.exceptions.NetmikoAuthenticationException: Authentication to device failed.
+
+Common causes of this problem are:
+1. Invalid username and password
+2. Incorrect SSH-key file
+3. Connecting to the wrong device
+
+Device settings: cisco_xr 172.16.110.88:22
+
+
+Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/iosxr/iosxr.py", line 81, in open
+    self.device.open()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/pyIOSXR/iosxr.py", line 202, in open
+    raise ConnectError(au_err.args[0])
+napalm.pyIOSXR.exceptions.ConnectError: Authentication to device failed.
+
+Common causes of this problem are:
+1. Invalid username and password
+2. Incorrect SSH-key file
+3. Connecting to the wrong device
+
+Device settings: cisco_xr 172.16.110.88:22
+
+
+Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir_napalm/plugins/tasks/napalm_cli.py", line 19, in napalm_cli
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/iosxr/iosxr.py", line 84, in open
+    raise ConnectionException(conn_err.args[0])
+napalm.base.exceptions.ConnectionException: Authentication to device failed.
+
+Common causes of this problem are:
+1. Invalid username and password
+2. Incorrect SSH-key file
+3. Connecting to the wrong device
+
+Device settings: cisco_xr 172.16.110.88:22
+
+
+Authentication failed.
+
+2022-12-26 12:47:29,217 -  nornir.core -     INFO -        run() - Running task 'napalm_cli' with args {'commands': ['show interfaces summary']} on 2 hosts
+2022-12-26 12:47:29,896 - nornir.core.task -    ERROR -      start() - Host 'rt1': task 'napalm_cli' failed with traceback:
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 1046, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/lib/python3/dist-packages/paramiko/client.py", line 435, in connect
+    self._auth(
+  File "/usr/lib/python3/dist-packages/paramiko/client.py", line 766, in _auth
+    raise saved_exception
+  File "/usr/lib/python3/dist-packages/paramiko/client.py", line 753, in _auth
+    self._transport.auth_password(username, password)
+  File "/usr/lib/python3/dist-packages/paramiko/transport.py", line 1563, in auth_password
+    return self.auth_handler.wait_for_response(my_event)
+  File "/usr/lib/python3/dist-packages/paramiko/auth_handler.py", line 258, in wait_for_response
+    raise e
+paramiko.ssh_exception.AuthenticationException: Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/pyIOSXR/iosxr.py", line 186, in open
+    self.device = ConnectHandler(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/ssh_dispatcher.py", line 365, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 439, in __init__
+    self._open()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 444, in _open
+    self.establish_connection()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/cisco/cisco_xr.py", line 11, in establish_connection
+    super().establish_connection(width=width, height=height)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 1083, in establish_connection
+    raise NetmikoAuthenticationException(msg)
+netmiko.exceptions.NetmikoAuthenticationException: Authentication to device failed.
+
+Common causes of this problem are:
+1. Invalid username and password
+2. Incorrect SSH-key file
+3. Connecting to the wrong device
+
+Device settings: cisco_xr 172.16.110.88:22
+
+
+Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/iosxr/iosxr.py", line 81, in open
+    self.device.open()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/pyIOSXR/iosxr.py", line 202, in open
+    raise ConnectError(au_err.args[0])
+napalm.pyIOSXR.exceptions.ConnectError: Authentication to device failed.
+
+Common causes of this problem are:
+1. Invalid username and password
+2. Incorrect SSH-key file
+3. Connecting to the wrong device
+
+Device settings: cisco_xr 172.16.110.88:22
+
+
+Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir_napalm/plugins/tasks/napalm_cli.py", line 19, in napalm_cli
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/iosxr/iosxr.py", line 84, in open
+    raise ConnectionException(conn_err.args[0])
+napalm.base.exceptions.ConnectionException: Authentication to device failed.
+
+Common causes of this problem are:
+1. Invalid username and password
+2. Incorrect SSH-key file
+3. Connecting to the wrong device
+
+Device settings: cisco_xr 172.16.110.88:22
+
+
+Authentication failed.
+
+2022-12-26 12:47:34,715 - nornir.core.task -    ERROR -      start() - Host 'rt2': task 'napalm_cli' failed with traceback:
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 1046, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/lib/python3/dist-packages/paramiko/client.py", line 435, in connect
+    self._auth(
+  File "/usr/lib/python3/dist-packages/paramiko/client.py", line 766, in _auth
+    raise saved_exception
+  File "/usr/lib/python3/dist-packages/paramiko/client.py", line 753, in _auth
+    self._transport.auth_password(username, password)
+  File "/usr/lib/python3/dist-packages/paramiko/transport.py", line 1563, in auth_password
+    return self.auth_handler.wait_for_response(my_event)
+  File "/usr/lib/python3/dist-packages/paramiko/auth_handler.py", line 258, in wait_for_response
+    raise e
+paramiko.ssh_exception.AuthenticationException: Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir_napalm/plugins/tasks/napalm_cli.py", line 19, in napalm_cli
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/ios/ios.py", line 170, in open
+    self.device = self._netmiko_open(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/napalm/base/base.py", line 113, in _netmiko_open
+    self._netmiko_device = ConnectHandler(
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/ssh_dispatcher.py", line 365, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 439, in __init__
+    self._open()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 444, in _open
+    self.establish_connection()
+  File "/home/servsoc/.local/lib/python3.10/site-packages/netmiko/base_connection.py", line 1083, in establish_connection
+    raise NetmikoAuthenticationException(msg)
+netmiko.exceptions.NetmikoAuthenticationException: Authentication to device failed.
+
+Common causes of this problem are:
+1. Invalid username and password
+2. Incorrect SSH-key file
+3. Connecting to the wrong device
+
+Device settings: cisco_ios 172.16.110.88:22
+
+
+Authentication failed.
+
