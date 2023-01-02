@@ -6,9 +6,9 @@ import contrasena as contra
 
 pem_mex_1 = {
     "device_type": "cisco_ios",
-    "host": "172.16.111.61",
-    "username": contra.inicioSesion.obtener_usuario(),
-    "password": "s3rv1c10s0c14l"
+    "host": "172.16.110.88",
+    "username": 'rjuarez',
+    "password": "sanfran"
 }
 
 pem_mex_2 = {    

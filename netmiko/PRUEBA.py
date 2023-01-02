@@ -1,4 +1,4 @@
-import inventory.routers as rt
+import Inventory.routers as rt
 from netmiko import ConnectHandler
 import comandos as com
 

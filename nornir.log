@@ -847,3 +847,5 @@ You can also look at the Netmiko session_log or debug log for more information.
 
 
 
+2023-01-02 12:05:39,271 -  nornir.core -     INFO -        run() - Running task 'mostrar_interfaces' with args {} on 2 hosts
+2023-01-02 12:06:45,710 -  nornir.core -     INFO -        run() - Running task 'mostrar_interfaces' with args {} on 2 hosts
